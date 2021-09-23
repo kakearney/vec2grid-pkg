@@ -1,4 +1,5 @@
 ## vec2grid.m Documentation
+[![View vec2grid on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/21617-vec2grid)
 
 This is a simple utility to rearrange a list of data points into an ndgrid-style grid.  It allows the original data points to be listed in any order, and allows for missing grid points (which become NaNs in the final grid).
 
