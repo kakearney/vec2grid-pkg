@@ -83,12 +83,23 @@ ndim = length(x);
 [xunique, blah, xidx] = cellfun(@unique, x, 'uni', 0);
 nx = cellfun(@max, xidx);
 
-ynew = nan(nx);
+if isa(y, 'datetime')
+    ynew = NaT(nx);
+elseif iscell(y)
+    ynew = cell(nx);
+else
+    ynew = nan(nx);
+end
 ynew(sub2ind(nx, xidx{:})) = y;
 
 if nargout == (ndim+1)
     varargout = cell(ndim+1,1);
-    tmp = [xunique ynew];
+    tmp = [xunique {ynew}];
+    % if isa(ynew, 'datetime')
+    % 
+    % else
+    %     tmp = [xunique ynew];
+    % end
     [varargout{:}] = deal(tmp{:});
 elseif nargout == 2
     varargout{1} = xunique;
